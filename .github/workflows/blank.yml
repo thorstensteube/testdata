@@ -58,11 +58,11 @@ jobs:
 
       - uses: azure/container-scan@v0
         with:
-          image-name: ${{ env.CONTAINER_REGISTRY }}/library/postgres:latest
+          image-name: ${{ vars.CONTAINER_REGISTRY }}/library/postgres:latest
           #username: ${{ secrets.DOCKER_USERNAME }}
           #password: ${{ secrets.DOCKER_PASSWORD }}
           #format: 'sarif'
           #output: 'trivy-image-results2.sarif'
           #ignore-unfixed: true
           #vuln-type: 'os,library'
-          severity-threshold: 'CRITICAL,HIGH'
+          severity: 'CRITICAL,HIGH'
