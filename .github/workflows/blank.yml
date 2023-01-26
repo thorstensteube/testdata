@@ -35,18 +35,18 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-    - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: 'docker.io/library/postgres:latest'
-        format: 'sarif'
-        output: 'trivy-results.sarif'
-      #env:
-      #  TRIVY_USERNAME: Username
-      #  TRIVY_PASSWORD: Password
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/library/postgres:latest'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+        #env:
+        #  TRIVY_USERNAME: Username
+        #  TRIVY_PASSWORD: Password
 
-    - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: 'trivy-image-results.sarif'
-        category: 'image'
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-image-results.sarif'
+          category: 'image'
