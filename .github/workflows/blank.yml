@@ -66,4 +66,4 @@ jobs:
           #output: 'trivy-image-results2.sarif'
           #ignore-unfixed: true
           #vuln-type: 'os,library'
-          severity-threshold: 'HIGH'
+          #severity-threshold: 'HIGH'
