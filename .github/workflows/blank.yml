@@ -41,11 +41,12 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: '${{ vars.CONTAINER_REGISTRY }}/library/postgres:latest'
-          format: 'sarif'
+          #format: 'sarif'
           output: 'trivy-image-results.sarif'
           ignore-unfixed: true
           #vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+          #template: '@/contrib/sarif.tpl'
         env:
           TRIVY_USERNAME: ${{ vars.REGISTRY_USERNAME }}
           TRIVY_PASSWORD: ${{ vars.REGISTRY_PASSWORD }}
