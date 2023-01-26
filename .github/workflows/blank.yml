@@ -46,7 +46,7 @@ jobs:
           ignore-unfixed: true
           #vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-          #template: '@/contrib/sarif.tpl'
+          template: '@/contrib/sarif.tpl'
         env:
           TRIVY_USERNAME: ${{ vars.REGISTRY_USERNAME }}
           TRIVY_PASSWORD: ${{ vars.REGISTRY_PASSWORD }}
