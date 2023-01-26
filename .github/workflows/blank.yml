@@ -56,7 +56,8 @@ jobs:
           sarif_file: 'trivy-image-results.sarif'
           category: 'image'
 
-      - uses: azure/container-scan@v0
+      - name: Run Azure vulnerability scanner
+        uses: azure/container-scan@v0
         with:
           image-name: ${{ vars.CONTAINER_REGISTRY }}/library/postgres:latest
           #username: ${{ secrets.DOCKER_USERNAME }}
@@ -65,4 +66,4 @@ jobs:
           #output: 'trivy-image-results2.sarif'
           #ignore-unfixed: true
           #vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
+          severity-threshold: 'HIGH'
