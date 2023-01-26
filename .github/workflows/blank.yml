@@ -44,7 +44,7 @@ jobs:
           format: 'sarif'
           output: 'trivy-image-results.sarif'
           ignore-unfixed: true
-          vuln-type: 'os,library'
+          #vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
         #env:
