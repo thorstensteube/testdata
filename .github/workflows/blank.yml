@@ -46,9 +46,9 @@ jobs:
           ignore-unfixed: true
           #vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-        #env:
-        #  TRIVY_USERNAME: ${{ vars.REGISTRY_USERNAME }}
-        #  TRIVY_PASSWORD: ${{ vars.REGISTRY_PASSWORD }}
+        env:
+          TRIVY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          TRIVY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
