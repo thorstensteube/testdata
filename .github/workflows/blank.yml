@@ -46,13 +46,23 @@ jobs:
           ignore-unfixed: true
           #vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-
-        #env:
-        #  TRIVY_USERNAME: Username
-        #  TRIVY_PASSWORD: Password
+        env:
+          TRIVY_USERNAME: ${{ vars.REGISTRY_USERNAME }}
+          TRIVY_PASSWORD: ${{ vars.REGISTRY_PASSWORD }}
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-image-results.sarif'
           category: 'image'
+
+      - uses: azure/container-scan@v0
+        with:
+          image-name: ${{ env.CONTAINER_REGISTRY }}/library/postgres:latest
+          #username: ${{ secrets.DOCKER_USERNAME }}
+          #password: ${{ secrets.DOCKER_PASSWORD }}
+          format: 'sarif'
+          output: 'trivy-image-results2.sarif'
+          ignore-unfixed: true
+          #vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
