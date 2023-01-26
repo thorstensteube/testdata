@@ -42,17 +42,4 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-image-results.sarif'
-          category: 'image'
-
-      - name: Run Azure vulnerability scanner
-        uses: azure/container-scan@v0
-        with:
-          image-name: ${{ vars.CONTAINER_REGISTRY }}/library/postgres:latest
-          #username: ${{ secrets.DOCKER_USERNAME }}
-          #password: ${{ secrets.DOCKER_PASSWORD }}
-          #format: 'sarif'
-          #output: 'trivy-image-results2.sarif'
-          #ignore-unfixed: true
-          #vuln-type: 'os,library'
-          severity-threshold: 'HIGH'
-          run-quality-checks: false
+          #category: 'image'
