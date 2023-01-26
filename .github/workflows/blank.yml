@@ -43,7 +43,7 @@ jobs:
           image-ref: '${{ vars.CONTAINER_REGISTRY }}/library/postgres:latest'
           format: 'sarif'
           output: 'trivy-image-results.sarif'
-          ignore-unfixed: true
+          #ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
