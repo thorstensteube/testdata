@@ -28,15 +28,16 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: '${{ vars.CONTAINER_REGISTRY }}/library/postgres:latest'
+          #image-ref: '${{ vars.CONTAINER_REGISTRY }}/library/postgres:latest'
+          image-ref: '${{ vars.CONTAINER_REGISTRY }}/release/nscale/cmis-connector:latest'
           format: 'sarif'
           output: 'trivy-image-results.sarif'
           ignore-unfixed: true
-          #vuln-type: 'os,library'
+          vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-        #env:
-        #  TRIVY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
-        #  TRIVY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+        env:
+          TRIVY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          TRIVY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
